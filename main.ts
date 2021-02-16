@@ -1,17 +1,24 @@
 input.onButtonPressed(Button.A, function () {
-    for (let index = 0; index < 128; index++) {
-        basic.clearScreen()
-        radio.sendString("DECLINED")
-        basic.pause(100)
-    }
+    basic.showString("")
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "DUCKS") {
         basic.showIcon(IconNames.Duck)
-    } else {
-        basic.showString(receivedString)
-    }
-    if (receivedString == "<") {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else if (receivedString == "<") {
         basic.showLeds(`
             . . # . .
             . # . . .
@@ -19,10 +26,14 @@ radio.onReceivedString(function (receivedString) {
             . # . . .
             . . # . .
             `)
-    } else {
-        basic.showString(receivedString)
-    }
-    if (receivedString == ">") {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else if (receivedString == ">") {
         basic.showLeds(`
             . . # . .
             . . . # .
@@ -30,10 +41,14 @@ radio.onReceivedString(function (receivedString) {
             . . . # .
             . . # . .
             `)
-    } else {
-        basic.showString(receivedString)
-    }
-    if (receivedString == "^") {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else if (receivedString == "^") {
         basic.showLeds(`
             . . # . .
             . # # # .
@@ -41,16 +56,34 @@ radio.onReceivedString(function (receivedString) {
             . . # . .
             . . # . .
             `)
-    } else {
-        basic.showString(receivedString)
-    }
-    if (receivedString == "\\/") {
         basic.showLeds(`
-            . . # . .
-            . . # . .
-            # . # . #
-            . # # # .
-            . . # . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else if (receivedString == "Open Door") {
+        basic.showLeds(`
+            . # # # #
+            . # # # #
+            . # # . #
+            . # # # #
+            . # # # #
+            `)
+        basic.showLeds(`
+            # . . . .
+            # . . . .
+            # . . . .
+            # . . . .
+            # . . . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
             `)
     } else {
         basic.showString(receivedString)
