@@ -1,12 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    basic.showString("")
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
+	
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "DUCKS") {
@@ -85,14 +78,68 @@ radio.onReceivedString(function (receivedString) {
             . . . . .
             . . . . .
             `)
+    } else if (receivedString == "Jump!") {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . # . .
+            . . # . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . # . .
+            . . . . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . # . .
+            . . # . .
+            `)
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
     } else {
         basic.showString(receivedString)
     }
 })
-input.onGesture(Gesture.Shake, function () {
-    radio.sendString("DUCKS")
+input.onButtonPressed(Button.B, function () {
+    basic.showLeds(`
+        # # # # #
+        . . # . .
+        . . # . .
+        . . # . .
+        # # # # #
+        `)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 })
+radio.setTransmitPower(1)
 radio.setGroup(-1e-308)
+basic.showLeds(`
+    . # # # .
+    # . . . #
+    # . # . #
+    # . . . #
+    . # # # .
+    `)
 basic.forever(function () {
 	
+})
+basic.forever(function () {
+    radio.sendString("CHILLI DOGS")
+    basic.pause(5000)
 })
